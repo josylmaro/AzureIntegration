@@ -15,6 +15,7 @@ namespace AzureIntegration.Core.Services
         private readonly string _endpoint;
         private readonly string _key;
         private readonly string _engine;
+        private static string _lastAnswer;
 
         public GenAIService( Settings configuration)
         {
@@ -25,10 +26,30 @@ namespace AzureIntegration.Core.Services
 
         public async Task<string> GetAnswerToQuestion(string question)
         {
-            OpenAIClient client = new(new Uri(_endpoint), new AzureKeyCredential(_key));
-            var response = await client.GetCompletionsAsync(_engine, question);
-            string completion = response.Value.Choices[0].Text;
-            return completion;
+            OpenAIClient client = new(new Uri(_endpoint), new AzureKeyCredential(_key));            Response<ChatCompletions> responseWithoutStream = await client.GetChatCompletionsAsync(
+                _engine,
+                new ChatCompletionsOptions()
+                {
+                    Messages =
+                    {
+            new ChatMessage(ChatRole.System, @"You are an AI assistant that helps people find information that answers in tagalog"),
+            new ChatMessage(ChatRole.User, question)
+                    },
+                    Temperature = (float)0.0,
+                    MaxTokens = 50,
+                    NucleusSamplingFactor = (float)0.95,
+                    FrequencyPenalty = 0,
+                    PresencePenalty = 0,
+                });
+
+            ChatCompletions completions = responseWithoutStream.Value;
+            _lastAnswer = completions.Choices.First().Message.Content;
+            return _lastAnswer;
+        }
+
+        public async Task<string> GetLastAnswer()
+        {
+            return _lastAnswer;
         }
     }
 }

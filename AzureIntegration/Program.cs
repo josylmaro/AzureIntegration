@@ -1,7 +1,5 @@
 using AzureIntegration.Configuration;
 using AzureIntegration.Core.Services;
-using Microsoft.Extensions.Azure;
-using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,16 +29,12 @@ builder.Services.AddScoped<IGenAIService, GenAIService>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Azure Integration Sample Use Case");
     });
 
-}
 
 app.UseHttpsRedirection();
 

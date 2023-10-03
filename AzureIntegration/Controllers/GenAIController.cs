@@ -27,6 +27,7 @@ public class GenAIController : ControllerBase
 
 
     [HttpGet(Name = "LastAnswer")]
+    [Route("LastAnswer")]
     public IEnumerable<GenAIModel> Get()
     {
         return Enumerable.Range(1, 5).Select(index => new GenAIModel
