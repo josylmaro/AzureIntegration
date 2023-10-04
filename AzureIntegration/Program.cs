@@ -26,13 +26,14 @@ builder.Services.AddSingleton(builder.Configuration.GetSection("AppSettings").Ge
 
 
 builder.Services.AddScoped<IGenAIService, GenAIService>();
+builder.Services.AddScoped<IServiceBusQueue, ServiceBusQueue>();
 
 var app = builder.Build();
 
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Azure Integration Sample Use Case");
+        c.SwaggerEndpoint("v1/swagger.json", "Azure Integration Sample Use Case");
     });
 
 

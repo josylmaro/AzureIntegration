@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34004.107
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureIntegration", ".\AzureIntegration\AzureIntegration.csproj", "{F0671C07-36B1-4659-A6E6-A9FAB7A3A351}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureIntegration", "AzureIntegration\AzureIntegration.csproj", "{F0671C07-36B1-4659-A6E6-A9FAB7A3A351}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureIntegration.Core", ".\AzureIntegration.Core\AzureIntegration.Core.csproj", "{A8D888DE-0A0A-4CF6-B820-1402B9AF110F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureIntegration.Core", "AzureIntegration.Core\AzureIntegration.Core.csproj", "{A8D888DE-0A0A-4CF6-B820-1402B9AF110F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureIntegration.Configuration", ".\AzureIntegration.Configuration\AzureIntegration.Configuration.csproj", "{7CE0C061-876E-4407-B570-690087025C1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureIntegration.Configuration", "AzureIntegration.Configuration\AzureIntegration.Configuration.csproj", "{7CE0C061-876E-4407-B570-690087025C1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureIntegration.Tests", ".\AzureIntegration.Tests\AzureIntegration.Tests.csproj", "{2C7B2E63-7D79-45D7-8E99-78BA47BD8513}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureIntegration.Tests", "AzureIntegration.Tests\AzureIntegration.Tests.csproj", "{2C7B2E63-7D79-45D7-8E99-78BA47BD8513}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureIntegration.FunctionApp", "AzureIntegration.FunctionApp\AzureIntegration.FunctionApp.csproj", "{79455D6D-6EE7-4597-9092-B9806DF045B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{2C7B2E63-7D79-45D7-8E99-78BA47BD8513}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C7B2E63-7D79-45D7-8E99-78BA47BD8513}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C7B2E63-7D79-45D7-8E99-78BA47BD8513}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79455D6D-6EE7-4597-9092-B9806DF045B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79455D6D-6EE7-4597-9092-B9806DF045B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79455D6D-6EE7-4597-9092-B9806DF045B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79455D6D-6EE7-4597-9092-B9806DF045B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

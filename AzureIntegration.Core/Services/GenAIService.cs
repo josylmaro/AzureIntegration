@@ -15,18 +15,23 @@ namespace AzureIntegration.Core.Services
         private readonly string _endpoint;
         private readonly string _key;
         private readonly string _engine;
+        private readonly string _queueTopic;
         private static string _lastAnswer;
+        private readonly IServiceBusQueue _serviceBusQueue;
 
-        public GenAIService( Settings configuration)
+        public GenAIService( Settings configuration, IServiceBusQueue serviceBusQueue)
         {
             _endpoint = configuration.GenAIUrl;
             _key = configuration.GenAIApiKey;
             _engine = configuration.GenAIEngine;
+            _queueTopic = configuration.ServiceBusTopicName;
+            _serviceBusQueue = serviceBusQueue;
         }
 
         public async Task<string> GetAnswerToQuestion(string question)
         {
-            OpenAIClient client = new(new Uri(_endpoint), new AzureKeyCredential(_key));            Response<ChatCompletions> responseWithoutStream = await client.GetChatCompletionsAsync(
+            OpenAIClient client = new(new Uri(_endpoint), new AzureKeyCredential(_key));
+            Response<ChatCompletions> responseWithoutStream = await client.GetChatCompletionsAsync(
                 _engine,
                 new ChatCompletionsOptions()
                 {
@@ -44,6 +49,7 @@ namespace AzureIntegration.Core.Services
 
             ChatCompletions completions = responseWithoutStream.Value;
             _lastAnswer = completions.Choices.First().Message.Content;
+            await _serviceBusQueue.Queue(_lastAnswer);
             return _lastAnswer;
         }
 
