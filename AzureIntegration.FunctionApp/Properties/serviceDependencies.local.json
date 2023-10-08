@@ -3,15 +3,25 @@
     "appInsights1": {
       "type": "appInsights.sdk"
     },
-    "secrets1": {
-      "type": "secrets.user"
-    },
     "storage1": {
       "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ServiceLinker/locations/southeastasia/connectors/Endpointsbjosylbcservicebus.servicebus.w_44FA5E1168",
       "secretStore": "LocalSecretsFile",
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/azureintegrationuseac18",
       "type": "storage.azure",
       "connectionId": "Endpoint=sb://josyl-bcservicebus.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=CnTZdS2/zHruH6c2ywa5Sa6cj1DCRJToc+ASbEIom6Y=",
+      "dynamicId": null
+    },
+    "secrets1": {
+      "secretStore": null,
+      "resourceId": null,
+      "type": "secrets.user",
+      "connectionId": null
+    },
+    "secrets2": {
+      "secretStore": null,
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/AzureIntegrationFunction",
+      "type": "secrets.keyVault",
+      "connectionId": "VaultUri",
       "dynamicId": null
     }
   }
